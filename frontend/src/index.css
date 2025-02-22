@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .custom-btn {
   background: linear-gradient(45deg, #ff416c, #ff4b2b);
   color: white;
@@ -10,4 +14,14 @@
 .custom-btn:hover {
   transform: scale(1.05);
   background: linear-gradient(45deg, #ff4b2b, #ff416c);
+}
+.contact-form {
+  width: 50%;
+  max-width: 500px;
+}
+
+@media (max-width: 768px) {
+  .contact-form {
+    width: 80%;
+  }
 }

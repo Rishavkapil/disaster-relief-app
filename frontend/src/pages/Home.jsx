@@ -1,7 +1,10 @@
-import React from "react";
-
 const Home = () => {
-  return <h2>Welcome to the Disaster Relief App</h2>;
+  return (
+    <div className="container mt-5">
+      <h2>Welcome to Disaster Relief Support</h2>
+      <p>This platform helps connect victims with volunteers and shelters in real time.</p>
+    </div>
+  );
 };
 
 export default Home;

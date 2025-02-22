@@ -1,13 +1,9 @@
 const mongoose = require("mongoose");
 
 const ShelterSchema = new mongoose.Schema({
-  name: String,
-  location: {
-    lat: Number,
-    lng: Number,
-  },
-  capacity: Number,
-  availableBeds: Number,
+  name: { type: String, required: true },
+  location: { type: String, required: true },
+  capacity: { type: Number, required: true },
 });
 
 module.exports = mongoose.model("Shelter", ShelterSchema);
