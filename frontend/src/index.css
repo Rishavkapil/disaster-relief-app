@@ -25,3 +25,53 @@
     width: 80%;
   }
 }
+/* ✅ Underline effect for active page */
+.navbar-nav .nav-link {
+  position: relative;
+  padding-bottom: 5px;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background-color: #007bff;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+/* ✅ Underline expands on active page */
+.navbar-nav .nav-link.active-page::after {
+  width: 100%;
+}
+
+/* ✅ Hover Effect - Underline appears smoothly */
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+/* ✅ Hover Animation for Navbar Links */
+.navbar-nav .nav-link {
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff;
+  transform: scale(1.05);
+}
+
+/* ✅ Button Hover Animation */
+.animated-btn {
+  transition: all 0.3s ease-in-out;
+}
+
+.animated-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.3);
+}
+
