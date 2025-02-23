@@ -22,10 +22,10 @@ app.use(express.static("public"));
 // adding routes
 app.use("/api/help-requests", helpRequestRoutes);
 app.use("/api/shelters", sheltersRoutes);  
-// app.use("/api/volunteers",volunteers);
-app.use("/api/volunteers", require("./routes/Volunteers"));
+app.use("/api/volunteers",volunteers);
+// app.use("/api/volunteers", require("./routes/Volunteers"));
 // app.use("/api/users", require("./routes/Users"));
-app.use("/api/users", require("./routes/users"));
+app.use("/api/users", require("./routes/Users"));
 // Middleware
 
 // MongoDB Connection
