@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   backend:
-    image: 39bdf2963621  # Make sure this is the correct backend image ID or tag
+    image: rishavkapil/backend  # Make sure this is the correct backend image ID or tag
     container_name: backend-container
     restart: always
     ports:
@@ -14,7 +14,7 @@ services:
       - mongo
 
   frontend:
-    image: fd47b5a8a047  # Replace with your actual frontend image name or ID
+    image: rishavkapil/frontend  # Replace with your actual frontend image name or ID
     container_name: frontend-container
     restart: always
     ports:

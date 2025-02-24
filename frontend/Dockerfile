@@ -10,7 +10,7 @@ RUN npm install
 
 # Copy the entire project after installing dependencies
 COPY . .
-
+ENV REACT_APP_API_URL=http://backend:5000/api
 # Run the Vite build command
 RUN npm run build
 
