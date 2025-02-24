@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  backend:
+    image: 39bdf2963621  # Make sure this is the correct backend image ID or tag
+    container_name: backend-container
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb+srv://rishavkapil:this_is_my_password_1@my-cluster.rcmvs.mongodb.net/?retryWrites=true&w=majority&appName=my-cluster
+      - FRONTEND_URL=http://frontend:3000  # Corrected frontend URL
+    depends_on:
+      - mongo
+
+  frontend:
+    image: fd47b5a8a047  # Replace with your actual frontend image name or ID
+    container_name: frontend-container
+    restart: always
+    ports:
+      - "3000:80"
+    environment:
+      - REACT_APP_API_URL=http://backend:5000/api  # Correct backend URL
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo-container
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
+
