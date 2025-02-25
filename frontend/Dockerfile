@@ -1,26 +1,28 @@
-# Stage 1: Build the Vite app
+# Use Node.js for building the frontend
 FROM node:18 AS build
 WORKDIR /app
 
-# Copy package.json and package-lock.json first for caching
+# Copy package.json and package-lock.json first
 COPY package.json package-lock.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy the entire project after installing dependencies
+# Copy the rest of the frontend files
 COPY . .
-ENV REACT_APP_API_URL=http://backend:5000/api
+
+# Set environment variable at build time
+ARG REACT_APP_BACKEND_URL
+ENV REACT_APP_BACKEND_URL=${REACT_APP_BACKEND_URL}
+
 # Run the Vite build command
 RUN npm run build
 
-# Debugging step: Check if the build folder exists
+# Check if the build folder exists
 RUN ls -la /app/dist || echo "Build folder missing!"
 
-# Stage 2: Serve the built Vite app with Nginx
+# Serve the built app with Nginx
 FROM nginx:latest
-
-# Copy the built files from the previous stage
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Expose port 80 for serving the app
@@ -28,4 +30,5 @@ EXPOSE 80
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
+
 

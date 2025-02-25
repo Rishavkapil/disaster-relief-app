@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+// const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://backend:5000/api/";
+const backendUrl =
+  process.env.REACT_APP_BACKEND_URL ||
+  (window.location.hostname === "localhost"
+    ? "http://localhost:5000/api/"
+    : "http://my-elb-787140277.ap-south-1.elb.amazonaws.com/api/");
+
+console.log("Backend URL:", backendUrl);
 
 const Login = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState("");
@@ -11,7 +19,10 @@ const Login = ({ setIsAuthenticated }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/users/login", { email, password });
+      const res = await axios.post(
+        `${backendUrl}users/login`,
+        { email, password }
+      );
       localStorage.setItem("token", res.data.token);
       setIsAuthenticated(true);
       navigate("/dashboard"); // Redirect to dashboard after login

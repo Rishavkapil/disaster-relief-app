@@ -8,7 +8,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Signup from "./pages/Signup";
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
