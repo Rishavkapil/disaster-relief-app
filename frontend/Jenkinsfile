@@ -5,7 +5,7 @@ pipeline {
         AWS_CREDENTIALS = credentials('aws-ecr-credentials')  // Use Jenkins credentials
         IMAGE_NAME = 'frontend-ecr-repo'
         AWS_REGION = 'ap-south-1'  // Change to your AWS region
-        ACCOUNT_ID = 'your-account-id'  // Replace with your AWS Account ID
+        ACCOUNT_ID = '124355654427'  // Replace with your AWS Account ID
         ECR_URL = "${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${IMAGE_NAME}"
     }
 
