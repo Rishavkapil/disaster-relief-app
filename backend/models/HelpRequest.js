@@ -1,15 +1,16 @@
 const mongoose = require("mongoose");
 
-const HelpRequestSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  description: String,
-  urgency: { type: String, enum: ["low", "medium", "high"], required: true },
-  location: {
-    lat: Number,
-    lng: Number,
+const HelpRequestSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    contact: { type: String, required: true },
+    location: { type: String, required: true },
+    helpType: { type: String, required: true },
+    urgency: { type: String, required: true },
+    notes: { type: String },
+    status: { type: String, default: "pending" }
   },
-  status: { type: String, enum: ["pending", "resolved"], default: "pending" },
-  createdAt: { type: Date, default: Date.now },
-});
+  { timestamps: true }
+);
 
 module.exports = mongoose.model("HelpRequest", HelpRequestSchema);

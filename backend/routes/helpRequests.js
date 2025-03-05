@@ -1,26 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const HelpRequest = require("../models/HelpRequest");
+const helpRequestController = require("../controller/HelpRequestController");
 
-// Create Help Request
-router.post("/", async (req, res) => {
-  try {
-    const helpRequest = new HelpRequest(req.body);
-    await helpRequest.save();
-    res.status(201).json(helpRequest);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// Get All Help Requests
-router.get("/", async (req, res) => {
-  try {
-    const requests = await HelpRequest.find();
-    res.json(requests);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// Corrected routes
+router.post("/", helpRequestController.requestHelp); // POST /api/help-requests
+router.get("/", helpRequestController.getHelpRequests); // GET /api/help-requests
+router.get("/:id", helpRequestController.getHelpRequestById); // GET /api/help-requests/:id
+router.put("/:id", helpRequestController.updateHelpRequest); // PUT /api/help-requests/:id
+router.delete("/:id", helpRequestController.deleteHelpRequest); // DELETE /api/help-requests/:id
 
 module.exports = router;

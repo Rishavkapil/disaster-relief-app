@@ -6,7 +6,10 @@ const { Server } = require("socket.io");
 const http = require("http");
 const helpRequestRoutes = require("./routes/helpRequests");
 const sheltersRoutes = require("./routes/Shelter");
-const volunteers = require("./routes/Volunteers")
+const volunteers = require("./routes/Volunteers");
+const users = require("./routes/Users");
+const victimRoutes = require("./routes/Victims"); // ✅ Added Victim Routes
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -19,21 +22,23 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static("public"));
 
-// adding routes
+// Adding routes
 app.use("/api/help-requests", helpRequestRoutes);
-app.use("/api/shelters", sheltersRoutes);  
-app.use("/api/volunteers",volunteers);
-// app.use("/api/volunteers", require("./routes/Volunteers"));
-// app.use("/api/users", require("./routes/Users"));
-app.use("/api/users", require("./routes/Users"));
-// Middleware
+app.use("/api/shelters", sheltersRoutes);
+app.use("/api/volunteers", volunteers);
+app.use("/api/users", users);
+app.use("/api/victims", victimRoutes); // ✅ Added Victim API routes
+// app.use("/api/victims", victimRoutes);
+
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log("MongoDB Connected"))
-.catch(err => console.log(err));
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log(err));
 
 // WebSocket Connection
 io.on("connection", (socket) => {
@@ -53,6 +58,6 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, '0.0.0.0',() => {
+server.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
