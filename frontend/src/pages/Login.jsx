@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 // const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://backend:5000/api/";
 const backendUrl =
-  process.env.REACT_APP_BACKEND_URL ||
+  import.meta.env.REACT_APP_BACKEND_URL ||
   (window.location.hostname === "localhost"
     ? "http://localhost:5000/api/"
     : "http://my-elb-787140277.ap-south-1.elb.amazonaws.com/api/");

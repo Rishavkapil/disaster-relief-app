@@ -8,7 +8,7 @@ const helpRequestRoutes = require("./routes/helpRequests");
 const sheltersRoutes = require("./routes/Shelter");
 const volunteers = require("./routes/Volunteers");
 const users = require("./routes/Users");
-const victimRoutes = require("./routes/Victims"); // ✅ Added Victim Routes
+const victimRoutes = require("./routes/Victims.js"); // ✅ Added Victim Routes
 
 const app = express();
 const server = http.createServer(app);

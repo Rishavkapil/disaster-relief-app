@@ -8,7 +8,10 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Signup from "./pages/Signup";
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+// import Victims from "./components/Victims";
+import VictimsPage from "./pages/VictimPage";
+import HelpRequests from "./pages/Help-request";
+const backendUrl = import.meta.env.REACT_APP_BACKEND_URL;
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -37,6 +40,9 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signup" element={<Signup />} />
+          {/* <Route path="/victims" element={<Victims />} /> */}
+          <Route path="/VictimsPage" element={<VictimsPage />} />
+          <Route path="/help-requests" element={<HelpRequests />} />
         </Routes>
       </Layout>
     </Router>

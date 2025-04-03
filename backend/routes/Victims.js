@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const victimController = require("../controller/VictimController");
+const victimController = require("../controller/VictimController.js");
 
 router.post("/", victimController.registerVictim); // POST /api/victims
 router.get("/", victimController.getAllVictims); // GET /api/victims

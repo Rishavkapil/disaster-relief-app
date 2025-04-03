@@ -27,6 +27,7 @@ const Layout = ({ children }) => {
                 ...(isLoggedIn ? [
                   { name: "Dashboard", path: "/dashboard" },
                   { name: "Shelter", path: "/shelter" },
+                  { name: "Victims", path: "/VictimsPage" },  // ✅ Added Victims Page
                 ] : [])
               ].map(({ name, path }) => (
                 <li key={path} className="nav-item">
