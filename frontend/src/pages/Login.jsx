@@ -8,7 +8,7 @@ const backendUrl =
     ? "http://localhost:5000/api/"
     : "http://my-elb-787140277.ap-south-1.elb.amazonaws.com/api/");
 
-console.log("Backend URL:", backendUrl);
+// console.log("Backend URL:", backendUrl);
 
 const Login = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState("");
