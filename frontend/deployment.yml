@@ -1,4 +1,4 @@
-apiVersion: app/v1
+apiVersion: 20250414173811
 kind: Deployment
 metadata: 
   name: frontend-deployment
