@@ -14,6 +14,6 @@ spec:
     spec: 
       containers: 
         - name: frontend
-          image: frontend:latest
+          image: 124355654427.dkr.ecr.ap-south-1.amazonaws.com/frontend/service:${IMAGE_TAG}
           ports:
             - containerPort: 80
