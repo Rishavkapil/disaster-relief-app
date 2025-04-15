@@ -12,6 +12,8 @@ spec:
       labels:
         app: frontend
     spec: 
+      imagePullSecrets:
+        - name: ecr-creds
       containers: 
         - name: frontend
           image: 124355654427.dkr.ecr.ap-south-1.amazonaws.com/frontend/service:20250415145447
