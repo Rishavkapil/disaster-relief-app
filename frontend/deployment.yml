@@ -17,6 +17,6 @@ spec:
         - name: ecr-creds
       containers: 
         - name: frontend
-          image: 124355654427.dkr.ecr.ap-south-1.amazonaws.com/frontend/service:20250415145447
+          image: 124355654427.dkr.ecr.ap-south-1.amazonaws.com/frontend/service:20250416123037
           ports:
             - containerPort: 80
