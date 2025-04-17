@@ -16,7 +16,7 @@ spec:
         - name: regcred
       containers: 
         - name: frontend
-          image: 124355654427.dkr.ecr.ap-south-1.amazonaws.com/frontend/service:20250416163120
+          image: 124355654427.dkr.ecr.ap-south-1.amazonaws.com/frontend/service:20250417130930
           ports:
             - containerPort: 83
           resources: 
