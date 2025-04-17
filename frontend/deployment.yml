@@ -1,28 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
+metadata:
   name: frontend-deployment
-spec: 
-  selector: 
-    matchLabels: 
+  namespace: default
+spec:
+  selector:
+    matchLabels:
       app: frontend
   replicas: 1
-  template: 
-    metadata: 
+  template:
+    metadata:
       labels:
         app: frontend
-    spec: 
-      imagePullSecrets:
-        - name: regcred
-      containers: 
+    spec:
+      containers:
         - name: frontend
           image: 124355654427.dkr.ecr.ap-south-1.amazonaws.com/frontend/service:20250417151649
           ports:
             - containerPort: 83
-          resources: 
-            requests: 
+          resources:
+            requests:
               memory: "128Mi"
               cpu: "250m"
-            limits: 
+            limits:
               memory: "256Mi"
               cpu: "500m"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 83
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 83
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
