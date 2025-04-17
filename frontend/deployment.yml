@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata: 
   name: frontend-deployment
-  namespace: disaster-relief
 spec: 
   selector: 
     matchLabels: 
@@ -14,9 +13,16 @@ spec:
         app: frontend
     spec: 
       imagePullSecrets:
-        - name: ecr-creds
+        - name: regcred
       containers: 
         - name: frontend
           image: 124355654427.dkr.ecr.ap-south-1.amazonaws.com/frontend/service:20250416163120
           ports:
-            - containerPort: 80
+            - containerPort: 83
+          resources: 
+            requests: 
+              memory: "128Mi"
+              cpu: "250m"
+            limits: 
+              memory: "256Mi"
+              cpu: "500m"
